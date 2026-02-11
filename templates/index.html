@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subject PDF Generator</title>
+    <style>
+        body { font-family: sans-serif; padding: 50px; text-align: center; }
+        select, input, button { padding: 10px; margin: 10px; width: 300px; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Generate Subject Document</h2>
+    <form action="/generate" method="post">
+        <input type="text" name="student_name" placeholder="Enter Student Name" required><br>
+        
+        <label>Select Subject:</label><br>
+        <select name="subject_info" id="subject_info" onchange="updateHiddenFields()">
+            <option value="CCW332|DIGITAL MARKETING">CCW332 - DIGITAL MARKETING</option>
+            <option value="CCS375|WEB TECHNOLOGIES">CCS375 - WEB TECHNOLOGIES</option>
+            <option value="CCS341|DATA WAREHOUSING">CCS341 - DATA WAREHOUSING</option>
+            <option value="CCS354|NETWORK SECURITY">CCS354 - NETWORK SECURITY</option>
+            <option value="CCS356|OBJECT ORIENTED SOFTWARE ENGINEERING">CCS356 - OBJECT ORIENTED SOFTWARE ENGINEERING</option>
+            <option value="CS3691|EMBEDDED SYSTEMS AND IOT">CS3691 - EMBEDDED SYSTEMS AND IOT</option>
+            <option value="OBT351|FOOD, NUTRITION AND HEALTH">OBT351 - FOOD, NUTRITION AND HEALTH</option>
+            <option value="MX3089|INDUSTRIAL SAFETY">MX3089 - INDUSTRIAL SAFETY</option>
+        </select>
+        
+        <input type="hidden" name="subject_code" id="subject_code" value="CCW332">
+        <input type="hidden" name="subject_name" id="subject_name" value="DIGITAL MARKETING">
+        
+        <br>
+        <button type="submit">GENERATE PDF</button>
+    </form>
+
+    <script>
+        function updateHiddenFields() {
+            var val = document.getElementById("subject_info").value;
+            var parts = val.split("|");
+            document.getElementById("subject_code").value = parts[0];
+            document.getElementById("subject_name").value = parts[1];
+        }
+    </script>
+</body>
+</html>
